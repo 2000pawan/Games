@@ -1,12 +1,14 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship:
+class Ship(Sprite):
     def __init__(self, ai_settings, screen):
         """Initialize the ship and set its starting position."""
+        super(Ship, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
-        self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\ship.png')
-        self.image = pygame.transform.scale(self.image, (100,100))
+        self.image = pygame.image.load('ship.png')
+        self.image = pygame.transform.scale(self.image, (165,165))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         self.rect.centerx = self.screen_rect.centerx
@@ -14,13 +16,14 @@ class Ship:
         self.center = float(self.rect.centerx)
         self.moving_right = False
         self.moving_left = False
+        self.ship_speed_factor = ai_settings.ship_speed_factor
 
     def update(self):
         """Update the ship position on the moving flag."""
         if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.center += self.ai_settings.ship_speed_factor
+            self.center += self.ship_speed_factor
         if self.moving_left and self.rect.left > 0:
-            self.center -= self.ai_settings.ship_speed_factor
+            self.center -= self.ship_speed_factor
         self.rect.centerx = self.center
 
     def blitme(self):
@@ -30,4 +33,9 @@ class Ship:
     def center_ship(self):
         """Center the ship on the screen."""
         self.center = self.screen_rect.centerx
-        
+
+    def get_rect(self):
+        return self.rect
+
+    def get_image(self):
+        return self.image

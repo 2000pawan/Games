@@ -1,7 +1,7 @@
 import pygame 
 from pygame.sprite import Sprite
 import sys
-        
+
 class Alien(Sprite):
     """A class to represent a single alien in the fleet."""
     def __init__(self, ai_settings, screen):
@@ -15,10 +15,8 @@ class Alien(Sprite):
             self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\alien.png')
         except pygame.error as e:
             print(e)
-            sys.exist()
-        self.image = pygame.transform.scale(self.image, (80,80))
-        # self.image = pygame.Surface((50, 50))  # Creates a temporary square
-        # self.image.fill((255, 0, 0))  # Fills it red
+            sys.exit()
+        self.image = pygame.transform.scale(self.image, (90,90))
         self.rect = self.image.get_rect()
         
         # Start each new alien at the top left of the screen.
@@ -38,8 +36,6 @@ class Alien(Sprite):
         self.x += (self.ai_settings.alien_speed_factor * self.ai_settings.fleet_direction)
         self.rect.x = self.x
         
-        
     def blitme(self):
         """Draw the alien at its current location."""
-        # self.screen.blit(self.image, self.rect)
-        pygame.draw.rect(self.screen, (255, 0, 0), self.rect)  # Draw a red rectangle instead of an image
+        self.screen.blit(self.image, self.rect)

@@ -1,12 +1,11 @@
 import pygame
 from pygame.sprite import Sprite
 
-    
 class Bullet(Sprite):
     """A class to manage bullets fired from the ship."""
     def __init__(self, ai_settings, screen, ship):
         """Create a bullet object at the ship's current position."""
-        super(Bullet, self).__init__()
+        super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings
         self.ship = ship
@@ -30,9 +29,33 @@ class Bullet(Sprite):
         self.rect.y = self.y
 
         # Check if the bullet has moved off the top of the screen.
-        if self.rect.bottom < 0:
+        if self.is_off_screen():
             self.kill()
 
     def draw_bullet(self):
         """Draw the bullet to the screen."""
         pygame.draw.rect(self.screen, self.color, self.rect)
+
+    def __str__(self):
+        return f"Bullet at position ({self.rect.x}, {self.rect.y})"
+
+    def __repr__(self):
+        return f"Bullet(rect={self.rect}, color={self.color}, speed_factor={self.speed_factor})"
+
+    def reset(self):
+        """Reset the bullet to the ship's position."""
+        self.rect.centerx = self.ship.rect.centerx
+        self.rect.top = self.ship.rect.top
+        self.y = float(self.rect.y)
+
+    def is_off_screen(self):
+        """Check if the bullet has moved off the top of the screen."""
+        return self.rect.bottom < 0
+
+    def move(self):
+        """Move the bullet."""
+        self.update()
+
+    def draw(self):
+        """Draw the bullet."""
+        self.draw_bullet()
