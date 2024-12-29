@@ -12,7 +12,7 @@ class Alien(Sprite):
         
         # Load the alien image and set its rect attribute.
         try:
-            self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\alien.png')
+            self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\assets\\alien.png')
         except pygame.error as e:
             print(e)
             sys.exit()

@@ -7,7 +7,7 @@ class Ship(Sprite):
         super(Ship, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
-        self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\ship.png')
+        self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\assets\\ship.png')
         self.image = pygame.transform.scale(self.image, (165,165))
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()

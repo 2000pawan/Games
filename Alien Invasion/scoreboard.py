@@ -9,7 +9,7 @@ class Heart(pygame.sprite.Sprite):
     def __init__(self, ai_settings, screen):
         super().__init__()
         self.screen = screen
-        self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\heart.png')
+        self.image = pygame.image.load('G:\\Coding\\Git Uploads\\Project\\Games\\Alien Invasion\\assets\\heart.png')
         self.image = pygame.transform.scale(self.image, (30,30)) 
         self.rect = self.image.get_rect()
     
