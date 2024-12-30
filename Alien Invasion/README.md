@@ -24,7 +24,7 @@ Contributions are welcome! Feel free to fork the repository, make changes, and s
 
 For any queries or suggestions, reach out to:
 
-Name: Pawan Yadav.
+Name: Pawan Yadav (AI Engineer).
 
 Email: yaduvanshi2000pawan@gmail.com
 
